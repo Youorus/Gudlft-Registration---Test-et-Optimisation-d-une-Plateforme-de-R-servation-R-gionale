@@ -1,4 +1,3 @@
-# tests/unit/test_load_clubs.py
 from server import loadClubs
 
 def test_load_clubs():
