@@ -1,3 +1,5 @@
+![Capture d’écran 2025-03-20 à 14 49 08](https://github.com/user-attachments/assets/b1c16d18-c77e-4ad9-908b-bfa2ab0cb15f)
+
 # gudlift-registration
 
 1. Why
