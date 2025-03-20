@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Club Points Display</title>
     <style>
+        /* Style pour la table de points */
         table {
             width: 50%;
             border-collapse: collapse;
             margin: 20px auto;
         }
+
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
         }
@@ -22,14 +25,30 @@
 </head>
 <body>
     <h1>Club Points Display</h1>
+
+    <!-- Affichage des messages flash -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                <!-- Boucle à travers tous les messages flash et les afficher -->
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Table pour afficher les points des clubs -->
     <table>
         <thead>
             <tr>
+                <!-- En-têtes de la table -->
                 <th>Club Name</th>
                 <th>Points</th>
             </tr>
         </thead>
         <tbody>
+            <!-- Boucle à travers chaque club et afficher son nom et ses points -->
             {% for club in clubs %}
                 <tr>
                     <td>{{ club['name'] }}</td>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking for {{competition['name']}} || GUDLFT</title>
-</head>
-<style>
+    <style>
+        /* Style pour afficher les messages flash en rouge et en gras */
         .flash-messages {
             list-style-type: none;
             padding: 0;
@@ -15,26 +15,33 @@
             font-weight: bold;
         }
     </style>
+</head>
 <body>
     <h2>{{competition['name']}}</h2>
-    Places available: {{competition['numberOfPlaces']}}
-
-    <!-- Afficher les messages flash -->
+    <p>Places available: {{competition['numberOfPlaces']}}</p>
 
     <!-- Formulaire de réservation -->
     <form action="/purchasePlaces" method="post">
+        <!-- Champs cachés pour transmettre les informations du club et de la compétition -->
         <input type="hidden" name="club" value="{{club['name']}}">
         <input type="hidden" name="competition" value="{{competition['name']}}">
+
+        <!-- Champ pour entrer le nombre de places à réserver -->
         <label for="places">How many places?</label>
-        <input type="number" name="places" id="places"  required>
+        <input type="number" name="places" id="places" required>
+
+        <!-- Bouton pour soumettre le formulaire -->
         <button type="submit">Book</button>
     </form>
-   {% with messages = get_flashed_messages() %}
+
+    <!-- Affichage des messages flash si présents -->
+    {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class="flash-messages">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
+                <!-- Boucle à travers tous les messages flash et les afficher -->
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
